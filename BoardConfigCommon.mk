@@ -47,6 +47,7 @@ TARGET_NO_BOOTLOADER := true
 # Kernel properties
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
+TARGET_KERNEL_CLANG_COMPILE := false
 TARGET_KERNEL_SOURCE := kernel/sony/msm8956
 
 # Kernel configurations
@@ -149,6 +150,9 @@ TARGET_NO_RPC := true
 DEVICE_MANIFEST_FILE := $(PLATFORM_PATH)/manifest.xml
 DEVICE_MATRIX_FILE := $(PLATFORM_PATH)/compatibility_matrix.xml
 
+DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += \
+    $(PLATFORM_PATH)/device_framework_matrix.xml
+
 # Keymaster
 TARGET_PROVIDES_KEYMASTER := true
 
@@ -202,6 +206,11 @@ BOARD_SEPOLICY_DIRS += $(PLATFORM_PATH)/sepolicy/vendor
 
 # Vendor SPL
 VENDOR_SECURITY_PATCH = "2018-09-01"
+
+### VENDOR FILE OVERRIDE
+BUILD_BROKEN_DUP_RULES := true
+BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
+BUILD_BROKEN_INCORRECT_PARTITION_IMAGES := true
 
 # Platform vendor
 -include vendor/sony/loire-common/BoardConfigVendor.mk

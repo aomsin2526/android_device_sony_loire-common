@@ -84,7 +84,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # GMS
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.com.google.clientidbase=android-sonymobile \
     ro.com.google.clientidbase.ms=android-sonymobile-rev1 \
     ro.com.google.rlzbrandcode=SOMA \
     ro.com.google.rlz_ap_whitelist=y0,y5,y6,y7,y8
@@ -228,3 +227,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.debug.wfd.enable=1 \
     persist.sys.wfd.virtual=0
+
+# Graphics
+PRODUCT_PROPERTY_OVERRIDES += \
+    debug.renderengine.backend=threaded
+
+# BPF - needed for ultra legacy devices
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.kernel.ebpf.supported=false
